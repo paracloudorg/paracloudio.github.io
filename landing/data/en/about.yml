@@ -1,0 +1,17 @@
+############################# About ###################################
+about:
+  enable : true
+  title : About Us
+  about_item :
+  # - icon : ti-ruler-pencil # themify icon pack : https://themify.me/themify-icons
+  #   title : We're Creative
+  #   content : >
+  #     We do all and even more
+
+  - icon : ti-thought # themify icon pack : https://themify.me/themify-icons
+    title : We're Professional
+    content : DevOps and Cloud engineers want to share their experience with you.
+
+  - icon : ti-cup # themify icon pack : https://themify.me/themify-icons
+    title : We're Sharing
+    content : We love opensource and contribute to it a lot.

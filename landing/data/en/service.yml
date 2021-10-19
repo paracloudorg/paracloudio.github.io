@@ -1,0 +1,48 @@
+################################# Service #################################
+service:
+  enable : true
+  title : Our Services
+  service_item :
+    # service item loop
+    - name : Single interface to any cloud.
+      icon : ti-layout # themify icon pack : https://themify.me/themify-icons
+      content : No more vendor lock! Deploy whatever wherever and don't be dependent on a specific cloud provider.
+
+    - name : Codeless infrastructure setup on any clouds simultaneously.
+      icon : ti-pulse # themify icon pack : https://themify.me/themify-icons
+      content : No more multiple teams and expensive experts! Just give your Developers and DevOps the right tool and boost their efficiency up.
+
+    - name : Transfer from one provider to another.
+      icon : ti-world # themify icon pack : https://themify.me/themify-icons
+      content : Don't miss discounts on cloud provider and optimize your infrastructure cost! Without the downtime just move your data between providers.
+
+    - name : Use Infrastructure as a Code everywhere
+      icon : ti-package # themify icon pack : https://themify.me/themify-icons
+      content : >
+        No more legacy infrastructure and forgotten pricey servers.
+        Represent your cloud infrastructure as IaaC with our tools and get all easiness of smart infrastructure management.
+
+    # # service item loop
+    # - name : Responsive Design
+    #   icon : ti-layout # themify icon pack : https://themify.me/themify-icons
+    #   content : Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus.Nullam iaculis arcu at mauris dapibus consectetur.
+
+    # # service item loop
+    # - name : Media &amp; Advertisement
+    #   icon : ti-blackboard # themify icon pack : https://themify.me/themify-icons
+    #   content : Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus.Nullam iaculis arcu at mauris dapibus consectetur.
+
+    # # service item loop
+    # - name : Graphic Design
+    #   icon : ti-palette # themify icon pack : https://themify.me/themify-icons
+    #   content : Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus.Nullam iaculis arcu at mauris dapibus consectetur.
+
+    # # service item loop
+    # - name : Apps Development
+    #   icon : ti-package # themify icon pack : https://themify.me/themify-icons
+    #   content : Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus.Nullam iaculis arcu at mauris dapibus consectetur.
+
+    # # service item loop
+    # - name : Networking
+    #   icon : ti-pulse # themify icon pack : https://themify.me/themify-icons
+    #   content : Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus.Nullam iaculis arcu at mauris dapibus consectetur.

@@ -1,0 +1,12 @@
+############################### Banner ################################
+banner:
+  enable : true
+  bg_image_webp : "images/backgrounds/hero-area.webp"
+  bg_image : "images/backgrounds/hero-area.jpg"
+  icon : "" # themify icon pack : https://themify.me/themify-icons
+  title : "Experience the new cloud reality"
+  content : "Single interface to all cloud providers and easy management with most popular tools on the market!"
+  button:
+    enable : true
+    label : "Explore Us"
+    link : "#services"
