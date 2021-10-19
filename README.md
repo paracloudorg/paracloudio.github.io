@@ -1,2 +1,2 @@
 # paracloudio.github.io
-exampleSite page
+landing page
