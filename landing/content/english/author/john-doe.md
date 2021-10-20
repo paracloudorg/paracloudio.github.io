@@ -1,7 +1,7 @@
 ---
 title: "Paracloud team"
 image: ""
-email: "Para"
+email: "paracloud.io@gmail.com"
 social:
   - icon : "ti-facebook" # themify icon pack : https://themify.me/themify-icons
     link : "#"

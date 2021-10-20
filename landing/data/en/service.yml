@@ -8,15 +8,15 @@ service:
       icon : ti-layout # themify icon pack : https://themify.me/themify-icons
       content : No more vendor lock! Deploy whatever wherever and don't be dependent on a specific cloud provider.
 
-    - name : Codeless infrastructure setup on any clouds simultaneously.
+    - name : Codeless infrastructure.
       icon : ti-pulse # themify icon pack : https://themify.me/themify-icons
-      content : No more multiple teams and expensive experts! Just give your Developers and DevOps the right tool and boost their efficiency up.
+      content : No more multiple teams and expensive experts! Boost your DevOps efficiency up with our services.
 
-    - name : Transfer from one provider to another.
+    - name : Transfer between providers.
       icon : ti-world # themify icon pack : https://themify.me/themify-icons
-      content : Don't miss discounts on cloud provider and optimize your infrastructure cost! Without the downtime just move your data between providers.
+      content : Never miss discounts on cloud provider - optimize your infrastructure cost! Easily move your data between providers.
 
-    - name : Use Infrastructure as a Code everywhere
+    - name : Infrastructure as a Code everywhere
       icon : ti-package # themify icon pack : https://themify.me/themify-icons
       content : >
         No more legacy infrastructure and forgotten pricey servers.
