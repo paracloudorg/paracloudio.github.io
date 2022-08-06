@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Paracloud generation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="static/codemirror.js"></script>
+  <script src="static/yaml.js"></script>
+  <script src="static/yaml-frontmatter.js"></script>
+  <script src="static/yaml-lint.js"></script>
+  <link rel="stylesheet" href="static/codemirror.css">
+
+  <link rel="stylesheet" href="static/styles/default.min.css">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+  <script src="static/terraform.js"></script>
+  <style>
+    .CodeMirror {
+        border: 1px solid black;
+        height: 600px;
+    }
+  </style>
+
+</head>
+<body>
+
+<script>
+    $(document).ready(function() {
+        $('#submit').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/gen',
+                contentType: "application/json",
+                //dataType: 'json',
+                data: JSON.stringify({yaml_data: $('#taid').val()}),
+                success: function(result)
+                {
+                    $("#content").html(result);
+                      hljs.registerLanguage('terraform', window.hljsDefineTerraform);
+                      hljs.highlightAll();
+
+                }
+            });
+        });
+    });
+</script>
+
+<div class="container">
+    <h1 align="center">Paracloud demo</h1>
+<h3>Example clouds config in YAML</h3>
+<div class="mb-3">
+    <textarea class="editor language-html form-control" rows="30" form ="testformid" name="taname" id="taid" cols="35" wrap="soft">
+---
+clouds:
+  aws:
+    region: "us-west-2"
+    az: "us-west-2a"
+    vpc_network: 10.0.0.0/16
+    ssh_key_path: "~/.ssh/id_rsa.pub"
+    size1: t2.micro
+    size2: t2.small
+  azure:
+    region: "eastus"
+    az: "zone1"
+    vpc_network: 10.0.0.0/16
+    ssh_key_path: "~/.ssh/id_rsa.pub"
+    size1: Standard_F2
+    size2: Standard_F4
+
+  outputs:
+      - web.ip
+      - data.ip
+
+  servers:
+    - server: web_server
+      os: ubuntu-22.04
+      size: cloud_size1
+      count: 3
+      remote_command:
+        - sudo apt-get update
+      inbound_access:
+        - from: all
+          port: 80
+          protocol: tcp
+        - from: all
+          port: 443
+          protocol: tcp
+        - from: all
+          port: 22-25
+          protocol: tcp
+      outbound_access:
+        - to: all
+      network: 10.0.0.0/24
+      elastic: true
+      tags:
+        "Server Role": "Web-server"
+        OS: "Ubuntu-22"
+
+    - server: database
+      os: ubuntu-22.04
+      size: cloud_size1
+      count: 1
+      remote_command:
+        - sudo apt-get update
+        - sudo apt-get install -y mariadb-server
+      inbound_access:
+        - from: web_server
+          port: 3306
+          protocol: tcp
+        - from: web_server
+          port: 5431-5432
+          protocol: tcp
+        - from: bastion
+          port: 22
+          protocol: tcp
+      outbound_access:
+        - to: all
+          port: 80
+          protocol: tcp
+        - to: all
+          port: 443
+          protocol: tcp
+        - to: all
+          port: 53
+          protocol: tcp
+      network: 10.0.2.0/24
+      network_type: private
+      elastic: false
+
+    - server: bastion
+      os: ubuntu-22.04
+      size: cloud_size1
+      count: 1
+      network: 10.0.0.0/24
+      elastic: true
+      tags:
+        "Server Role": "Bastion-server"
+        OS: "Ubuntu-22"
+      inbound_access:
+        - from: all
+          port: 22
+          protocol: tcp
+      outbound_access:
+        - to: all
+
+    </textarea>
+    <form name="input" id="testformid">
+        <input class="btn btn-dark" type="submit" id="submit" value="Generate!">
+    </form>
+</div>
+
+
+<script type="text/javascript">
+
+
+  const editorSource = document.querySelector("#taid");
+  var myCodeMirror = CodeMirror.fromTextArea(editorSource, {
+    lineNumbers: true,
+    styleActiveLine: true,
+    setSize: (200,200),
+    //matchBrackets: true
+  });
+
+
+  myCodeMirror.setOption("theme", 'default');
+  // on and off handler like in jQuery
+  myCodeMirror.on('change',function(cMirror){
+    // get value right from instance
+    taid.value = cMirror.getValue();
+  });
+
+</script>
+
+<div id="content"></div>
+
+</div>
+
+</body>
+</html>
