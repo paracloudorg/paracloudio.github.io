@@ -31,7 +31,7 @@
             e.preventDefault();
             $.ajax({
                 type: 'POST',
-                url: '/gen',
+                url: 'demo.paracloud.io/gen',
                 contentType: "application/json",
                 //dataType: 'json',
                 data: JSON.stringify({yaml_data: $('#taid').val()}),
