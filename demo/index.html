@@ -54,33 +54,33 @@
     <textarea class="editor language-html form-control" rows="30" form ="testformid" name="taname" id="taid" cols="35" wrap="soft">
 ---
 clouds:
-  aws:
-    region: "us-west-2"
-    az: "us-west-2a"
-    vpc_network: 10.0.0.0/16
-    ssh_key_path: "~/.ssh/id_rsa.pub"
-    size1: t2.micro
+  aws:                      # AWS cloud specific settings
+    region: "us-west-2"     # Indicates the region where your infrastructure will be deployed.
+    az: "us-west-2a"        # Set the Availability Zone for the region, for subnets
+    vpc_network: 10.0.0.0/16  # Indicates the IP range of the virtual private cloud network.
+    ssh_key_path: "~/.ssh/id_rsa.pub"  # This is the key path to inject into servers
+    size1: t2.micro         # Cloud specific settings, will be set as cloud_"option_name" below, like "cloud_size1"
     size2: t2.small
-  azure:
-    region: "eastus"
-    az: "zone1"
-    vpc_network: 10.0.0.0/16
-    ssh_key_path: "~/.ssh/id_rsa.pub"
-    size1: Standard_F2
+  azure:                    # Azure cloud specific settings
+    region: "eastus"        # Indicates the region where your infrastructure will be deployed.
+    az: "zone1"             # Set the Availability Zone for the region, for subnets
+    vpc_network: 10.0.0.0/16  # Indicates the IP range of the virtual private cloud network.
+    ssh_key_path: "~/.ssh/id_rsa.pub"  # This is the key path to inject into servers
+    size1: Standard_F2      # Cloud specific settings, will be set as cloud_"option_name" below, like "cloud_size1"
     size2: Standard_F4
 
-  outputs:
+  outputs:                  # Defines what kind of output should be generated on the cloud server. Example - web, data, etc.
       - web.ip
       - data.ip
 
-  servers:
+  servers:                  # Defining the server configurations that need to be deployed on cloud.
     - server: web_server
-      os: ubuntu-22.04
-      size: cloud_size1
-      count: 3
-      remote_command:
+      os: ubuntu-22.04      # What operating system should be hosted on your server.
+      size: cloud_size1     # Size here will indicate the instance type that needs to be allocated on the cloud.
+      count: 3              # Count to mention the number of servers.
+      remote_command:       # Defines the set of remote commands that need to run on your server.
         - sudo apt-get update
-      inbound_access:
+      inbound_access:       # Access that needs to be allowed to access your server.
         - from: all
           port: 80
           protocol: tcp
@@ -88,12 +88,12 @@ clouds:
           port: 443
           protocol: tcp
         - from: all
-          port: 22-25
+          port: 22-25       # Can be port range
           protocol: tcp
-      outbound_access:
+      outbound_access:      # Outbound access from server (use 'all' for allowing any outbound traffic)
         - to: all
-      network: 10.0.0.0/24
-      elastic: true
+      network: 10.0.0.0/24  # Indicates the IP range of subnet where server is deployed in.
+      elastic: true         # Use Elastic IP to assign to servers
       tags:
         "Server Role": "Web-server"
         OS: "Ubuntu-22"
@@ -105,17 +105,17 @@ clouds:
       remote_command:
         - sudo apt-get update
         - sudo apt-get install -y mariadb-server
-      inbound_access:
-        - from: web_server
+      inbound_access:       # Access that needs to be allowed to access your server.
+        - from: web_server  # Allow access from specific server mentioned in this config
           port: 3306
           protocol: tcp
         - from: web_server
           port: 5431-5432
           protocol: tcp
-        - from: bastion
+        - from: bastion     # Allow access from specific server mentioned in this config
           port: 22
           protocol: tcp
-      outbound_access:
+      outbound_access:      # Outbound access from server
         - to: all
           port: 80
           protocol: tcp
@@ -126,7 +126,7 @@ clouds:
           port: 53
           protocol: tcp
       network: 10.0.2.0/24
-      network_type: private
+      network_type: private  # Indicates private network w/o external access to it, gateway is created automatically
       elastic: false
 
     - server: bastion
