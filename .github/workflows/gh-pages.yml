@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master  # Set a branch to deploy
+      - testsite
   pull_request:
 
 jobs:
@@ -21,7 +22,7 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
-          # extended: true
+          extended: true
 
       - name: Build
         run: hugo --minify
