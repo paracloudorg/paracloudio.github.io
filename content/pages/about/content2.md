@@ -7,8 +7,8 @@ align: left
 ---
 
 Using our tools convert your existing cloud resources to Infrastructure as Code:
-run the tool and get all your cloud resources in Ansible playbooks. By running
-these playbooks you can deploy same infrastructure exactly on any other region or
+run the tool and get all your cloud resources in code of Ansible playbooks or Terraform.
+From now you can manage this code with the best practices of Infrastructure-as-Code.
+By running this code you can deploy same infrastructure exactly on any other region or
 project. Just Copy&Paste your cloud! Use these playbooks to organize your
-infrastructure and optimize resources, continue to manage your cloud with these
-playbooks.
+infrastructure and optimize resources, manage your cloud with GitOps.
