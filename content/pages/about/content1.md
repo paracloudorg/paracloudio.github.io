@@ -8,7 +8,9 @@ button: 'Try our demo'
 buttonLink: 'https://demo.paracloud.io'
 ---
 
-We generate Terraform deployment scripts according to your configuration.
-Create a YAML file describing tyour cloud services, using our example in demo and
-press "**Generate!**". You will get AWS and Azure deployment scripts. Use whatever cloud
-provider you want and don't hesitate to switch to another in case of dicount.
+We offer a convenient solution for multi-cloud deployment. Our service generates
+Terraform deployment scripts based on your specific configuration requirements.
+Simply create a YAML file that describes your desired cloud services, using our
+demo as an example, and then click "**Generate!**". You will receive deployment scripts
+for both AWS and Azure cloud providers. This allows you to freely choose which cloud
+provider you want to use and easily switch to another if a discount becomes available.

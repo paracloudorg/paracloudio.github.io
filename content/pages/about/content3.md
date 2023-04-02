@@ -7,6 +7,7 @@ align: right
 
 ---
 
-Transfer your cloud infrastructure from one cloud provider to another without
-costs or data loss. With our tools you can eliminate "vendor lock" and use whatever
-deals you have on any of cloud providers without spending effort on moving and reconfiguration.
+Our tools make it possible to transfer your cloud infrastructure from one provider
+to another without incurring costs or data loss. Say goodbye to "vendor lock" and
+take advantage of any deals or offers you have with cloud providers, without the
+need to spend time and effort on moving and reconfiguring your infrastructure.
